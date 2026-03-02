@@ -1,5 +1,6 @@
 package com.example.fintrack.controller;
 
+import com.example.fintrack.dto.UserResponse;
 import com.example.fintrack.entity.User;
 import com.example.fintrack.service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAllUsers() {
+    public List<UserResponse> getAllUsers() {
         return userService.getAllUsers();
     }
 

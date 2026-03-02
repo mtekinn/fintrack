@@ -1,5 +1,7 @@
 package com.example.fintrack.controller;
 
+import com.example.fintrack.dto.SummaryResponse;
+import com.example.fintrack.dto.TransactionResponse;
 import com.example.fintrack.entity.Transaction;
 import com.example.fintrack.service.TransactionService;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +18,7 @@ public class TransactionController {
     }
 
     @GetMapping
-    public List<Transaction> getAllTransactions() {
+    public List<TransactionResponse> getAllTransactions() {
         return transactionService.getAllTransactions();
     }
 
@@ -28,5 +30,10 @@ public class TransactionController {
     @DeleteMapping("/{id}")
     public void deleteTransaction(@PathVariable Long id) {
         transactionService.deleteTransaction(id);
+    }
+
+    @GetMapping("/summary/{userId}")
+    public SummaryResponse getSummary(@PathVariable Long userId) {
+        return transactionService.getSummary(userId);
     }
 }
